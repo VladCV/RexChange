@@ -1,0 +1,115 @@
+.faq {
+  margin-top: 120px;
+}
+
+.faq .accordion {
+  margin-top: 40px;
+}
+
+.accordion .accordion__item:last-child {
+  border-bottom: 2px solid rgba(170, 203, 231, 0.2);
+}
+
+.accordion__block-name {
+  text-transform: uppercase;
+  font-family: "BebasNeueBold";
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 30px;
+  color: #1B3771;
+  margin-left: 20px;
+  padding-bottom: 20px;
+}
+
+.accordion__item {
+  border-top: 2px solid rgba(170, 203, 231, 0.2);
+  padding-bottom: 8px;
+  cursor: pointer;
+}
+
+.accordion__item__top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 22px 20px 12px 20px;
+}
+
+.accordion__item__bottom {
+  display: none;
+}
+
+.accordion__item__top__q {
+  font-family: "ZonaPro";
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 21px;
+  color: #1B3771;
+}
+
+.accordion__item__top__icon {
+  min-width: 32px;
+  height: 32px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #F4E58A;
+  border-radius: 50%;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.accordion__item__bottom__text {
+  font-family: "ZonaPro";
+  font-size: 14px;
+  line-height: 20px;
+  color: #1B3771;
+  padding: 0 10px 20px 20px;
+  max-width: 1000px;
+}
+
+.openedBar {
+  background-color: #1B3771;
+  -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.openedBar svg path {
+  stroke: #fff;
+}
+
+.faq-page .wrapper .caption {
+  margin-top: 100px;
+  margin-bottom: 60px;
+}
+
+.second-accordion,
+.third-accordion {
+  margin-top: 40px;
+}
+
+.third-accordion {
+  margin-bottom: 120px;
+}
+
+@media (max-width: 600px) {
+  .faq-page .wrapper .caption {
+    font-size: 32px;
+    line-height: 32px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+}
