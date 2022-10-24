@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rex change</title>
+    <link rel="stylesheet" href="css/index.min.css">
+    <link rel="stylesheet" href="css/global.min.css">
+    <link rel="stylesheet" href="css/index_popup.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+    <div class="popup-main popup-main-p1">
+  <div class="popup-container">
+    <div class="popup__top_line">
+      <h2 class="popup__title" id="popup__title">Верфикация карты</h2>
+      <div class="popup__close-icon"></div>
+    </div>
+    <div class="popup__content">
+      <div class="popup__info">
+        <p class="popup__text">
+          <span>Пожалуйста, сфотографируйте карту банка</span> на фоне монитора
+          (экрана) компьютера с открытой вкладкой сайта rexchanger.ru
+        </p>
+        <p class="popup__text">
+          <span>Это необходимо для подтверждения добровольного перевода</span>
+          своих средств с карты для совершения обмена именно на нашем сайте.
+        </p>
+        <p class="popup__list">
+          <span class="popup__list_title">Требования к фотографии:</span>
+          <span class="popup__list_point"
+            >1. ВАЖНО: чтобы на фото читались и номер карты, и имя
+            владельца.</span
+          >
+          <span class="popup__list_point"
+            >2. На заднем фоне (за картой) должен быть виден монитор с открытой
+            вкладкой сайта rexchanger.ru</span
+          >
+        </p>
+      </div>
+      <div class="popup__input">
+        <form class="popup__upload">
+          <div>
+            <input
+              id="file-input"
+              type="file"
+              accept=".png, .jpg, .jpeg, .svg"
+              onchange="getFile();"
+            />
+            <label for="file-input">Загрузить фото</label>
+            <div id="file-size1">&nbsp;</div>
+          </div>
+        </form>
+      </div>
+      <div id="popup__image">
+        <span id="popup__delete_button"></span>
+        <div class="popup__delete_block">
+          <div class="delete_block__top">
+            <span class="delete_block__text">Удалить фото</span>
+            <span class="delete_block__close">&#128937;</span>
+          </div>
+          <div class="delete_block__bottom">
+            <button class="delete_block__back">Отмена</button>
+            <button class="delete_block__cancel">Удалить</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="popup__send">
+      <h2 class="send__title">Обработка заявки на верификацию карты</h2>
+      <p class="send__text">
+        Пожалуйста, ожидайте и не закрывайте окно. Заявка уже рассматривается!
+        Как только заявка по верификации будет обработана, вы сможете продолжить
+        текущий обмен.
+      </p>
+      <p class="send__text">
+        Также решение по верификации карты мы отправим Вам по указанному в
+        заявке email
+      </p>
+      <button class="send__button">Перейти к оплате заявки</button>
+    </div>
+    <div class="popup__footer">
+      <button class="popup__footer_first_button">Назад</button>
+      <button
+        class="popup__footer_second_button disactiv"
+        onclick="popupSend();"
+      >
+        Отправить
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="popup2-main popup-main-p2">
+  <div class="popup2-container">
+    <div class="popup2__top_line">
+      <h2 class="popup2__title" id="popup__title">Войти</h2>
+      <div class="popup2__close-icon"></div>
+    </div>
+    <div class="popup2__form">
+      <form>
+        <div class="popup_input-container">
+          <input type="email" class="form__input" id="popup-in_email" required/>
+          <label for="popup-in_email" class="label-placeholder">Ваш email</label>
+          <img src="img/achtung.svg" alt="!">
+        </div>
+        <div class="popup_input-container">
+          <input type="password" class="form__input" id="popup-in_password" required/>
+          <label for="popup-in_password" class="label-placeholder">Ваш пароль</label>
+          <img src="img/achtung.svg" alt="!">
+        </div>
+        <input type="submit" class="form__submit" value="Войти в аккаунт" />
+      </form>
+      <button class="popup2__password">Восстановить пароль</button>
+    </div>
+    <div class="popup2__footer">
+      <span class="popup2__footer_text">У Вас нет учётной записи?</span>
+      <button
+        class="popup2__footer_button"
+        id="popup2__footer_button"
+        onclick="popupSend();"
+      >
+        Регистрация
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="popup3-main popup-main-p3">
+  <div class="popup3-container">
+    <div class="popup3__top_line">
+      <h2 class="popup3__title" id="popup__title">Регистрация</h2>
+      <div class="popup3__close-icon"></div>
+    </div>
+    <div class="popup3__form">
+      <form>
+        <div class="popup_input-container">
+          <input type="email" class="form__input" id="popup_email" required/>
+          <label for="popup_email" class="label-placeholder">Email</label>
+          <img src="img/achtung.svg" alt="!">
+        </div>
+        <div class="popup_input-container">
+          <input type="password" class="form__input" id="popup_password" required/>
+          <label for="popup_password" class="label-placeholder">Пароль</label>
+          <img src="img/achtung.svg" alt="!">
+        </div>
+        <div class="popup_input-container">
+          <input type="password" class="form__input" id="popup_password-r" required/>
+          <label for="popup_password-r" class="label-placeholder">Повторите пароль</label>
+          <img src="img/achtung.svg" alt="!">
+        </div>
+        <input type="submit" class="form__submit" value="Зарегистрироваться" />
+      </form>
+    </div>
+    <div class="popup3__footer">
+      <span class="popup3__footer_text">У вас уже есть учетная запись?</span>
+      <button class="popup3__footer_button" onclick="popupSend();">
+        Войти
+      </button>
+    </div>
+  </div>
+</div>
+
+    <header class="header">
+    <div class="wrapper">
+        <a href="index.html">
+            <img src="img/logo.svg" alt="rex change">
+        </a>
+        <div class="wrapper-nav-sign">
+            <nav>
+                <ul class="wrapper-nav-sign__block">
+                    <li>
+                        <a href="index.html">Главная</a>
+                    </li>
+                    <li>
+                        <a href="faq.html">FAQ</a>
+                    </li>
+                    <li>
+                        <a href="cooperation.html">Сотрудничество</a>
+                    </li>
+                    <li style="position: relative;" id="dropka">
+                        <a href="news.html">Информация</a>
+                        <ul class="drop-nav">
+                            <div class="drop-nav__triangle"></div>
+                            <li>
+                                <a href="rules.html">Правила</a>
+                            </li>
+                            <li>
+                                <a href="news.html">Новости</a>
+                            </li>
+                            <li>
+                                <a href="">Отзывы</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <div class="wrapper-nav-sign__sign-wrapper">
+                <div class="btn-sign">
+                    Войти
+                </div>
+                <div class="btn-pay">
+                    Оплатить
+                </div>
+            </div>
+        </div>
+        <div class="wrapper-ham-icon">
+            <button class="toggle-hamburger toggle-hamburger__animx" id="hamIcon">
+                <span>menu toggle</span>
+            </button>
+        </div>
+    </div>
+</header>
+    
+    <section class="changer">
+        <div class="wrapper">
+            <h2 class="caption">
+                <span>Обмен криптовалют</span>
+                 по выгодным курсам
+            </h2>
+            <h3 class="undercaption">Работаем без выходных: с 10:00 до 23:00 (МСК)</h3>
+            <div class="changer__content-box">
+                <p class="changer__content-box__label">Выберите условия обмена</p>
+                <p class="changer__content-box__label second-label">Оставьте заявку</p>
+
+                <div class="changer__wrapper-containers">
+                    
+                    <div class="changer__content-box__container container-first">
+                        <div class="changer__input-area">
+                            <img src="img/BTC.png" alt="Coin">
+                            <input type="text" placeholder="Введите сумму">
+                            <p>BTC</p>
+                        </div>
+                        <p class="changer__container__min">Мин. сумма: 0.006317 BTC</p>
+                        <p class="changer__container__label">Криптовалюта:</p>
+                        <form action="" name="formCrypto"></form>
+                        <div class="changer__container__options">
+                            <input type="radio" id="radio1" name="formCrypto">
+                            <label for="radio1">
+                                <img src="img/BTC_.png" alt="BTC">
+                                <p>Bitcoin</p>
+                            </label>
+                            <input type="radio" id="radio2" name="formCrypto">
+                            <label for="radio2">
+                                <img src="img/ETH.png" alt="ETH">
+                                <p>Etherium</p>
+                            </label>
+                            <input type="radio" id="radio3" name="formCrypto">
+                            <label for="radio3">
+                                <img src="img/LTC.png" alt="LTC">
+                                <p>Litecoin</p>
+                            </label>
+                            <input type="radio" id="radio4" name="formCrypto">
+                            <label for="radio4">
+                                <img src="img/ETC.png" alt="ETC">
+                                <p>Ethereum Classic</p>
+                            </label>
+                            <input type="radio" id="radio5" name="formCrypto">
+                            <label for="radio5">
+                                <img src="img/XRP.png" alt="XRP">
+                                <p>Ripple</p>
+                            </label>
+                            <input type="radio" id="radio6" name="formCrypto">
+                            <label for="radio6">
+                                <img src="img/BCH.png" alt="BCH">
+                                <p>Bitcoin Cash</p>
+                            </label>
+                            <input type="radio" id="radio7" name="formCrypto">
+                            <label for="radio7">
+                                <img src="img/ZEC.png" alt="ZEC">
+                                <p>ZCash</p>
+                            </label>
+                            <input type="radio" id="radio8" name="formCrypto">
+                            <label for="radio8">
+                                <img src="img/DASH.png" alt="DASH">
+                                <p>Dash</p>
+                            </label>
+                            <input type="radio" id="radio9" name="formCrypto">
+                            <label for="radio9">
+                                <img src="img/XMR.png" alt="XMR">
+                                <p>Monero</p>
+                            </label>
+                            <input type="radio" id="radio10" name="formCrypto">
+                            <label for="radio10">
+                                <img src="img/DOGE.png" alt="DOGE">
+                                <p>DogeCoin</p>
+                            </label>
+                            <input type="radio" id="radio11" name="formCrypto">
+                            <label for="radio11">
+                                <img src="img/TRX_1.png" alt="TRX 1">
+                                <p>Tron</p>
+                            </label>
+                            <input type="radio" id="radio12" name="formCrypto">
+                            <label for="radio12">
+                                <img src="img/XRP.png" alt="XRP">
+                                <p>Stellar</p>
+                            </label>
+                            <input type="radio" id="radio13" name="formCrypto">
+                            <label for="radio13">
+                                <img src="img/USDT.png" alt="USDT">
+                                <p>Tether USDT ERC20</p>
+                            </label>
+                            <input type="radio" id="radio14" name="formCrypto">
+                            <label for="radio14">
+                                <img src="img/USDT.png" alt="USDT">
+                                <p>Tether USDT TRC20</p>
+                            </label>
+                            </div>
+                            
+                        <p class="changer__container__label">Другое:</p>
+                        <div class="changer__container__options">
+                            <input type="radio" id="radio_1" name="formCrypto">
+                            <label for="radio_1">
+                                <img src="img/Sberbank.svg" alt="Sberbank">
+                                <p>Сбер</p>
+                            </label>
+                            <input type="radio" id="radio_2" name="formCrypto">
+                            <label for="radio_2">
+                                <img src="img/AlphaBank.svg" alt="AlphaBank">
+                                <p>Альфа-Банк</p>
+                            </label>
+                            <input type="radio" id="radio_3" name="formCrypto">
+                            <label for="radio_3">
+                                <img src="img/Qiwi.svg" alt="Qiwi">
+                                <p>Qiwi</p>
+                            </label>
+                            <input type="radio" id="radio_4" name="formCrypto">
+                            <label for="radio_4">
+                                <img src="img/Raif.svg" alt="Райффайзен">
+                                <p>Райффайзен</p>
+                            </label>
+                            <input type="radio" id="radio_5" name="formCrypto">
+                            <label for="radio_5">
+                                <img src="img/VisaMastercard.svg" alt="VisaMastercard">
+                                <p>Visa/MasterCard</p>
+                            </label>
+                            <input type="radio" id="radio_6" name="formCrypto">
+                            <label for="radio_6">
+                                <img src="img/Cash.svg" alt="Наличные RUB">
+                                <p>Наличные RUB</p>
+                            </label>
+                            <input type="radio" id="radio_7" name="formCrypto">
+                            <label for="radio_7">
+                                <img src="img/Jumani.svg" alt="ЮMoney">
+                                <p>ЮMoney</p>
+                            </label>
+                            <input type="radio" id="radio_8" name="formCrypto">
+                            <label for="radio_8">
+                                <img src="img/Cash_USD.svg" alt="Наличные USD">
+                                <p>Наличные USD</p>
+                            </label>
+                            <input type="radio" id="radio_9" name="formCrypto">
+                            <label for="radio_9">
+                                <img src="img/Opening.svg" alt="Открытие">
+                                <p>Открытие</p>
+                            </label>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="changer__content-box__container container-second">
+                        <div class="changer__input-area second-area">
+                            <img src="img/BTC.png" alt="Coin">
+                            <input type="text" placeholder="Введите сумму">
+                            <p>BTC</p>
+                        </div>
+                        <p class="changer__container__min">Резерв: 2 430 400 RUB</p>
+                        <div class="changer__box-for-border">
+                        <p class="changer__container__label">Криптовалюта:</p>
+                        <form class="" name="formToWhich">
+                            <div class="changer__container__options choiceDisabled">
+                            <input type="radio" id="radio1_" name="formToWhich">
+                            <label for="radio1_">
+                                <img src="img/BTC.png" alt="BTC">
+                                <p>Bitcoin</p>
+                            </label>
+                            <input type="radio" id="radio2_" name="formToWhich">
+                            <label for="radio2_">
+                                <img src="img/ETH.png" alt="ETH">
+                                <p>Etherium</p>
+                            </label>
+                            <input type="radio" id="radio3_" name="formToWhich">
+                            <label for="radio3_">
+                                <img src="img/LTC.png" alt="LTC">
+                                <p>Litecoin</p>
+                            </label>
+                            <input type="radio" id="radio4_" name="formToWhich">
+                            <label for="radio4_">
+                                <img src="img/ETC.png" alt="ETC">
+                                <p>Ethereum Classic</p>
+                            </label>
+                            <input type="radio" id="radio5_" name="formToWhich">
+                            <label for="radio5_">
+                                <img src="img/XRP.png" alt="XRP">
+                                <p>Ripple</p>
+                            </label>
+                            <input type="radio" id="radio6_" name="formToWhich">
+                            <label for="radio6_">
+                                <img src="img/BCH.png" alt="BCH">
+                                <p>Bitcoin Cash</p>
+                            </label>
+                            <input type="radio" id="radio7_" name="formToWhich">
+                            <label for="radio7_">
+                                <img src="img/ZEC.png" alt="ZEC">
+                                <p>ZCash</p>
+                            </label>
+                            <input type="radio" id="radio8_" name="formToWhich">
+                            <label for="radio8_">
+                                <img src="img/DASH.png" alt="DASH">
+                                <p>Dash</p>
+                            </label>
+                            <input type="radio" id="radio9_" name="formToWhich">
+                            <label for="radio9_">
+                                <img src="img/XMR.png" alt="XMR">
+                                <p>Monero</p>
+                            </label>
+                            <input type="radio" id="radio10_" name="formToWhich">
+                            <label for="radio10_">
+                                <img src="img/DOGE.png" alt="DOGE">
+                                <p>DogeCoin</p>
+                            </label>
+                            <input type="radio" id="radio11_" name="formToWhich">
+                            <label for="radio11_">
+                                <img src="img/TRX_1.png" alt="TRX 1">
+                                <p>Tron</p>
+                            </label>
+                            <input type="radio" id="radio12_" name="formToWhich">
+                            <label for="radio12_">
+                                <img src="img/XRP.png" alt="XRP">
+                                <p>Stellar</p>
+                            </label>
+                            <input type="radio" id="radio13_" name="formToWhich">
+                            <label for="radio13_">
+                                <img src="img/USDT.png" alt="USDT">
+                                <p>Tether USDT ERC20</p>
+                            </label>
+                            <input type="radio" id="radio14_" name="formToWhich">
+                            <label for="radio14_">
+                                <img src="img/USDT.png" alt="USDT">
+                                <p>Tether USDT TRC20</p>
+                            </label>
+                        </div>
+
+                        <p class="changer__container__label">Другое:</p>
+                        <div class="changer__container__options" name="formToWhich">
+                            <input type="radio" id="radio_1_" name="formToWhich">
+                            <label for="radio_1_">
+                                <img src="img/Sberbank.svg" alt="Sberbank">
+                                <p>Сбер</p>
+                            </label>
+                            <input type="radio" id="radio_2_" name="formToWhich">
+                            <label for="radio_2_">
+                                <img src="img/AlphaBank.svg" alt="AlphaBank">
+                                <p>Альфа-Банк</p>
+                            </label>
+                            <input type="radio" id="radio_3_" name="formToWhich">
+                            <label for="radio_3_">
+                                <img src="img/Qiwi.svg" alt="Qiwi">
+                                <p>Qiwi</p>
+                            </label>
+                            <input type="radio" id="radio_4_" name="formToWhich">
+                            <label for="radio_4_">
+                                <img src="img/Raif.svg" alt="Райффайзен">
+                                <p>Райффайзен</p>
+                            </label>
+                            <input type="radio" id="radio_5_" name="formToWhich">
+                            <label for="radio_5_">
+                                <img src="img/VisaMastercard.svg" alt="VisaMastercard">
+                                <p>Visa/MasterCard</p>
+                            </label>
+                            <input type="radio" id="radio_6_" name="formToWhich">
+                            <label for="radio_6_">
+                                <img src="img/Cash.svg" alt="Наличные RUB">
+                                <p>Наличные RUB</p>
+                            </label>
+                            <input type="radio" id="radio_7_" name="formToWhich">
+                            <label for="radio_7_">
+                                <img src="img/Jumani.svg" alt="ЮMoney">
+                                <p>ЮMoney</p>
+                            </label>
+                            <input type="radio" id="radio_8_" name="formToWhich">
+                            <label for="radio_8_">
+                                <img src="img/Cash_USD.svg" alt="Наличные USD">
+                                <p>Наличные USD</p>
+                            </label>
+                            <input type="radio" id="radio_9_" name="formToWhich">
+                            <label for="radio_9_">
+                                <img src="img/Opening.svg" alt="Открытие">
+                                <p>Открытие</p>
+                            </label>
+                            </div>
+                        </form>
+                    </div>
+                    </div>
+                </div>
+                <div class="changer__content-box__container container-third">
+                    <p class="changer__content-box__label mob-label">Оставьте заявку</p>
+                    <form action="">
+                        <div class="container-third__top">
+                            <div class="form__name form__input">
+                                <input type="text" id="input_name" required>
+                                <label for="input_name" class="label-placeholder">ФИО, полное имя отправителя</label>
+                            </div>
+                            <div class="form__email form__input">
+                                <input type="email" id="input_email" required>
+                                <label for="input_email" class="label-placeholder">Ваш email</label>
+                                <img src="img/achtung.svg" alt="!">
+                            </div>
+                            <div class="form__card form__input">
+                                <input required type="tel" id="input_card" maxlength="19" pattern="[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4}">
+                                <label for="input_card" class="label-placeholder">Карта для получения</label>
+                                <img src="img/achtung.svg" alt="!">
+                            </div>
+                            <div class="form__coupon form__input">
+                                <input type="text" id="input_coupon">
+                                <label for="input_coupon" class="label-placeholder">Код купона (при наличии)</label>
+                                <img src="img/achtung.svg" alt="!">
+                            </div>
+                        </div>
+                        <div class="container-third__bottom">
+                            <p class="container-third__bottom__result">Итог:</p>
+                            <p class="container-third__bottom__from-to">0,006385 <span>BTN</span> - 20000 <span>RUB</span></p>
+                            <p class="container-third__bottom__course">По курсу: 1 BTC = 3 155 201,29 RUB</p>
+                            <img src="img/reCAPTCHA.png" alt="" style="margin-left: -5px; margin-top: 25px; margin-bottom: 14px; width: 100%;">
+                            <input type="submit" value="Совершить обмен">
+                            <div class="container-third__bottom__checkboxes">
+                                <label>
+                                    <input type='checkbox'>
+                                    <span></span>
+                                    <p>Получать уведомления об акциях и скидках</p>
+                                </label>
+                                <label>
+                                    <input type='checkbox'>
+                                    <span></span>
+                                    <p>Вы соглашаетесь с правилами сервиса</p>
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="navcard">
+        <div class="wrapper">
+            <div class="navcard__card">
+                <div class="navcard__card__top">
+                    <p class="navcard__card__caption">Новости</p>
+                    <a href="news.html">
+                        <img src="img/more-icon.svg" alt="More">
+                    </a>
+                </div>
+                <p class="navcard__card__text">Рекордные продажи NFT и биткоин по $40 тыс. События недели </p>
+                <div class="navcard__card__bottom">
+                    <p class="navcard__card__date">06 фев 2022, 11:00</p>
+                    <p class="navcard__card__source">РБК</p>
+                </div>
+                
+            </div>
+            <div class="navcard__card second-card">
+                <div class="navcard__card__top">
+                    <p class="navcard__card__caption">Топ Курсы</p>
+                    <div class="navcard__card__nav-arrows">
+                        <button class="slick-prev slick-arrow prev"></button>
+                        <button class="slick-next slick-arrow next" aria-label="Next" type="button"></button>
+                    </div>
+                </div>
+                <div class="navcard__card__slider">
+                    <div class="navcard__slider__slide">
+                        <img src="img/1.png" alt="1" class="navcard__slider__slide__back">
+                        <div class="navcard__slider__slide__from-to">
+                            <img src="img/ETC.svg" alt="1" class="navcard__slider__slide__icon">
+                            <p>ETC</p>
+                            <img src="img/Arrow_Left_Right.svg" alt="->" class="navcard__slider__slide__from-to__arrows">
+                            <img src="img/AlphaBank.svg" alt="2" class="navcard__slider__slide__icon">
+                            <p>RUB</p>
+                        </div>
+                        <p class="navcard__slider__slide__amount">3 192 024 ₽</p>
+                    </div>
+                    <div class="navcard__slider__slide">
+                        <img src="img/2.png" alt="2" class="navcard__slider__slide__back">
+                        <div class="navcard__slider__slide__from-to">
+                            <img src="img/ETC.svg" alt="1" class="navcard__slider__slide__icon">
+                            <p>ETC</p>
+                            <img src="img/Arrow_Left_Right.svg" alt="->" class="navcard__slider__slide__from-to__arrows">
+                            <img src="img/AlphaBank.svg" alt="2" class="navcard__slider__slide__icon">
+                            <p>RUB</p>
+                        </div>
+                        <p class="navcard__slider__slide__amount">3 192 024 ₽</p>
+                    </div>
+                    <div class="navcard__slider__slide">
+                        <img src="img/3.png" alt="3" class="navcard__slider__slide__back">
+                        <div class="navcard__slider__slide__from-to">
+                            <img src="img/ETC.svg" alt="1" class="navcard__slider__slide__icon">
+                            <p>ETC</p>
+                            <img src="img/Arrow_Left_Right.svg" alt="->" class="navcard__slider__slide__from-to__arrows">
+                            <img src="img/AlphaBank.svg" alt="2" class="navcard__slider__slide__icon">
+                            <p>RUB</p>
+                        </div>
+                        <p class="navcard__slider__slide__amount">3 192 024 ₽</p>
+                    </div>
+                </div>
+            </div>
+            <div class="navcard__card third-card">
+                <img src="img/back-telegram.svg" alt="-">
+                <p class="navcard__card__caption">Наш телеграм</p>
+                <p class="navcard__card__text">Мы имеем только один канал для связи. Остерегайтесь мошенников</p>
+                <a class="navcard__card__account" href="">@coinschanger24</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq">
+        <div class="wrapper">
+            <h2 class="caption">
+                <span>Остались вопросы?</span>
+            </h2>
+            <div class="accordion">
+                <p class="accordion__block-name">О сервисе</p>
+                <div class="accordion__item">
+                    <div class="accordion__item__top">
+                        <p class="accordion__item__top__q">
+                            Как совершить обмен на вашем сервисе?
+                        </p>
+                        <div class="accordion__item__top__icon">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 8H15M8 1V15" stroke="#1B3771" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="accordion__item__bottom">
+                        <p class="accordion__item__bottom__text">Чтобы совершить обмен на сервисе "CoinsChanger", на главной странице нашего сайта, выберите направления обмена. Введите сумму и заполните все необходимые поля. Нажмите кнопку «Обменять». В новом окне следуйте указаниям и нажимайте кнопку "Я оплатил!".</p>
+                    </div>
+                </div>
+                <div class="accordion__item">
+                    <div class="accordion__item__top">
+                        <p class="accordion__item__top__q">
+                            Я оплатил заявку, но деньги не пришли. Почему?
+                        </p>
+                        <div class="accordion__item__top__icon">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 8H15M8 1V15" stroke="#1B3771" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="accordion__item__bottom">
+                        <p class="accordion__item__bottom__text">Чтобы совершить обмен на сервисе "CoinsChanger", на главной странице нашего сайта, выберите направления обмена. Введите сумму и заполните все необходимые поля. Нажмите кнопку «Обменять». В новом окне следуйте указаниям и нажимайте кнопку "Я оплатил!".</p>
+                    </div>
+                </div>
+                <div class="accordion__item">
+                    <div class="accordion__item__top">
+                        <p class="accordion__item__top__q">
+                            Что мне делать, если я хочу отменить заявку после её оплаты?
+                        </p>
+                        <div class="accordion__item__top__icon">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 8H15M8 1V15" stroke="#1B3771" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="accordion__item__bottom">
+                        <p class="accordion__item__bottom__text">Чтобы совершить обмен на сервисе "CoinsChanger", на главной странице нашего сайта, выберите направления обмена. Введите сумму и заполните все необходимые поля. Нажмите кнопку «Обменять». В новом окне следуйте указаниям и нажимайте кнопку "Я оплатил!".</p>
+                    </div>
+                </div>
+                <div class="accordion__item">
+                    <div class="accordion__item__top">
+                        <p class="accordion__item__top__q">
+                            Режим работы сервиса?
+                        </p>
+                        <div class="accordion__item__top__icon">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 8H15M8 1V15" stroke="#1B3771" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="accordion__item__bottom">
+                        <p class="accordion__item__bottom__text">Чтобы совершить обмен на сервисе "CoinsChanger", на главной странице нашего сайта, выберите направления обмена. Введите сумму и заполните все необходимые поля. Нажмите кнопку «Обменять». В новом окне следуйте указаниям и нажимайте кнопку "Я оплатил!".</p>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion second-accord">
+                <p class="accordion__block-name">О заявке</p>
+                <div class="accordion__item">
+                    <div class="accordion__item__top">
+                        <p class="accordion__item__top__q">
+                            Как узнать статус выполнения моей заявки?
+                        </p>
+                        <div class="accordion__item__top__icon">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 8H15M8 1V15" stroke="#1B3771" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="accordion__item__bottom">
+                        <p class="accordion__item__bottom__text">Чтобы совершить обмен на сервисе "CoinsChanger", на главной странице нашего сайта, выберите направления обмена. Введите сумму и заполните все необходимые поля. Нажмите кнопку «Обменять». В новом окне следуйте указаниям и нажимайте кнопку "Я оплатил!".</p>
+                    </div>
+                </div>
+                <div class="accordion__item">
+                    <div class="accordion__item__top">
+                        <p class="accordion__item__top__q">
+                            Возможно ли обменять электронную валюту на наличные <br> (и наоборот) через личную встречу?
+                        </p>
+                        <div class="accordion__item__top__icon">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 8H15M8 1V15" stroke="#1B3771" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="accordion__item__bottom">
+                        <p class="accordion__item__bottom__text">Чтобы совершить обмен на сервисе "CoinsChanger", на главной странице нашего сайта, выберите направления обмена. Введите сумму и заполните все необходимые поля. Нажмите кнопку «Обменять». В новом окне следуйте указаниям и нажимайте кнопку "Я оплатил!".</p>
+                    </div>
+                </div>
+                <div class="accordion__item">
+                    <div class="accordion__item__top">
+                        <p class="accordion__item__top__q">
+                            Сколько времени обрабатывается заявка?
+                        </p>
+                        <div class="accordion__item__top__icon">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 8H15M8 1V15" stroke="#1B3771" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="accordion__item__bottom">
+                        <p class="accordion__item__bottom__text">Чтобы совершить обмен на сервисе "CoinsChanger", на главной странице нашего сайта, выберите направления обмена. Введите сумму и заполните все необходимые поля. Нажмите кнопку «Обменять». В новом окне следуйте указаниям и нажимайте кнопку "Я оплатил!".</p>
+                    </div>
+                </div>
+                <div class="accordion__item">
+                    <div class="accordion__item__top">
+                        <p class="accordion__item__top__q">
+                            Почему моя заявка будет заморожена?
+                        </p>
+                        <div class="accordion__item__top__icon">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 8H15M8 1V15" stroke="#1B3771" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="accordion__item__bottom">
+                        <p class="accordion__item__bottom__text">Чтобы совершить обмен на сервисе "CoinsChanger", на главной странице нашего сайта, выберите направления обмена. Введите сумму и заполните все необходимые поля. Нажмите кнопку «Обменять». В новом окне следуйте указаниям и нажимайте кнопку "Я оплатил!".</p>
+                    </div>
+                </div>
+                <div class="accordion__item">
+                    <div class="accordion__item__top">
+                        <p class="accordion__item__top__q">
+                            Что делать, если я потерял доступ к почте?
+                        </p>
+                        <div class="accordion__item__top__icon">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 8H15M8 1V15" stroke="#1B3771" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="accordion__item__bottom">
+                        <p class="accordion__item__bottom__text">Чтобы совершить обмен на сервисе "CoinsChanger", на главной странице нашего сайта, выберите направления обмена. Введите сумму и заполните все необходимые поля. Нажмите кнопку «Обменять». В новом окне следуйте указаниям и нажимайте кнопку "Я оплатил!".</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+    <div class="wrapper">
+        <div class="footer__container">
+            <div class="footer__left-area">
+                <img src="img/logo.svg" alt="rex change">
+                <p class="footer__left-area__time">Работаем без выходных: с 10:00 до 23:00 (МСК)</p>
+                <p class="footer__left-area__info">Рублевые (КОВ) активы Сбербанка можно с высокой скоростью, с оправданной экономией и гарантированно конвертировать в любые цифровые монеты на нашем сервисе</p>
+                <p class="footer__left-area__rights">Все права защищены © 2021-22</p>
+            </div>
+            <div class="footer__right-area">
+                <p class="footer__right-area__label">Безопасность:</p>
+                <div class="footer__right-area__security">
+                    <a href="">
+                        <img src="img/secur__1.png" alt="Comodo">
+                    </a>
+                    <a href="">
+                        <img src="img/secur__2.png" alt="PCI-dss">
+                    </a>
+                    <a href="">
+                        <img src="img/secur__3.png" alt="Cloudflare">
+                    </a>
+                </div>
+                <p class="footer__right-area__label">Партнеры:</p>
+                <div class="footer__right-area__partner">
+                    <a href="">
+                        <img src="img/partner_1.png" alt="BestChange">
+                    </a>
+                    <a href="">
+                        <img src="img/partner_2.png" alt="ExchangeSUMO">
+                    </a>
+                    <a href="">
+                        <img src="img/partner_3.png" alt="Icon">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <div class="menu">
+    <div class="wrapper">
+        <img src="img/logo.svg" alt="rex change">
+        <div class="wrapper-nav-sign__sign-wrapper">
+            <div class="btn-sign">
+                Войти
+            </div>
+            <div class="btn-pay">
+                Оплатить
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li>
+                    <a href="index.html">Главная</a>
+                </li>
+                <li>
+                    <a href="faq.html">FAQ</a>
+                </li>
+                <li>
+                    <a href="cooperation.html">Сотрудничество</a>
+                </li>
+                <li>
+                    <a href="news.html">Информация</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- <link rel="stylesheet" href="css/animate.css"> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script>
+        $('.navcard__card__slider').slick({
+           infinite: false,
+           dots: false,
+           slidesToShow: 2,
+           slidesToScroll: 1,
+           prevArrow: $('.prev'),
+           nextArrow: $('.next'),
+           responsive: [
+            {
+            breakpoint: 500,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                infinite: false,
+                dots: false
+            }
+            }
+          ]
+       });
+   </script>
+    <script src="js/main.js"></script>
+</body>
+</html>

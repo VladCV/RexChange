@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/global.min.css" />
+    <link rel="stylesheet" href="css/cooperation.min.css" />
+    <link rel="stylesheet" href="css/index_popup.min.css" />
+
+    <title>Rexchange</title>
+  </head>
+
+  <body>
+    <div class="popup-main popup-main-p1">
+  <div class="popup-container">
+    <div class="popup__top_line">
+      <h2 class="popup__title" id="popup__title">Верфикация карты</h2>
+      <div class="popup__close-icon"></div>
+    </div>
+    <div class="popup__content">
+      <div class="popup__info">
+        <p class="popup__text">
+          <span>Пожалуйста, сфотографируйте карту банка</span> на фоне монитора
+          (экрана) компьютера с открытой вкладкой сайта rexchanger.ru
+        </p>
+        <p class="popup__text">
+          <span>Это необходимо для подтверждения добровольного перевода</span>
+          своих средств с карты для совершения обмена именно на нашем сайте.
+        </p>
+        <p class="popup__list">
+          <span class="popup__list_title">Требования к фотографии:</span>
+          <span class="popup__list_point"
+            >1. ВАЖНО: чтобы на фото читались и номер карты, и имя
+            владельца.</span
+          >
+          <span class="popup__list_point"
+            >2. На заднем фоне (за картой) должен быть виден монитор с открытой
+            вкладкой сайта rexchanger.ru</span
+          >
+        </p>
+      </div>
+      <div class="popup__input">
+        <form class="popup__upload">
+          <div>
+            <input
+              id="file-input"
+              type="file"
+              accept=".png, .jpg, .jpeg, .svg"
+              onchange="getFile();"
+            />
+            <label for="file-input">Загрузить фото</label>
+            <div id="file-size1">&nbsp;</div>
+          </div>
+        </form>
+      </div>
+      <div id="popup__image">
+        <span id="popup__delete_button"></span>
+        <div class="popup__delete_block">
+          <div class="delete_block__top">
+            <span class="delete_block__text">Удалить фото</span>
+            <span class="delete_block__close">&#128937;</span>
+          </div>
+          <div class="delete_block__bottom">
+            <button class="delete_block__back">Отмена</button>
+            <button class="delete_block__cancel">Удалить</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="popup__send">
+      <h2 class="send__title">Обработка заявки на верификацию карты</h2>
+      <p class="send__text">
+        Пожалуйста, ожидайте и не закрывайте окно. Заявка уже рассматривается!
+        Как только заявка по верификации будет обработана, вы сможете продолжить
+        текущий обмен.
+      </p>
+      <p class="send__text">
+        Также решение по верификации карты мы отправим Вам по указанному в
+        заявке email
+      </p>
+      <button class="send__button">Перейти к оплате заявки</button>
+    </div>
+    <div class="popup__footer">
+      <button class="popup__footer_first_button">Назад</button>
+      <button
+        class="popup__footer_second_button disactiv"
+        onclick="popupSend();"
+      >
+        Отправить
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="popup2-main popup-main-p2">
+  <div class="popup2-container">
+    <div class="popup2__top_line">
+      <h2 class="popup2__title" id="popup__title">Войти</h2>
+      <div class="popup2__close-icon"></div>
+    </div>
+    <div class="popup2__form">
+      <form>
+        <div class="popup_input-container">
+          <input type="email" class="form__input" id="popup-in_email" required/>
+          <label for="popup-in_email" class="label-placeholder">Ваш email</label>
+          <img src="img/achtung.svg" alt="!">
+        </div>
+        <div class="popup_input-container">
+          <input type="password" class="form__input" id="popup-in_password" required/>
+          <label for="popup-in_password" class="label-placeholder">Ваш пароль</label>
+          <img src="img/achtung.svg" alt="!">
+        </div>
+        <input type="submit" class="form__submit" value="Войти в аккаунт" />
+      </form>
+      <button class="popup2__password">Восстановить пароль</button>
+    </div>
+    <div class="popup2__footer">
+      <span class="popup2__footer_text">У Вас нет учётной записи?</span>
+      <button
+        class="popup2__footer_button"
+        id="popup2__footer_button"
+        onclick="popupSend();"
+      >
+        Регистрация
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="popup3-main popup-main-p3">
+  <div class="popup3-container">
+    <div class="popup3__top_line">
+      <h2 class="popup3__title" id="popup__title">Регистрация</h2>
+      <div class="popup3__close-icon"></div>
+    </div>
+    <div class="popup3__form">
+      <form>
+        <div class="popup_input-container">
+          <input type="email" class="form__input" id="popup_email" required/>
+          <label for="popup_email" class="label-placeholder">Email</label>
+          <img src="img/achtung.svg" alt="!">
+        </div>
+        <div class="popup_input-container">
+          <input type="password" class="form__input" id="popup_password" required/>
+          <label for="popup_password" class="label-placeholder">Пароль</label>
+          <img src="img/achtung.svg" alt="!">
+        </div>
+        <div class="popup_input-container">
+          <input type="password" class="form__input" id="popup_password-r" required/>
+          <label for="popup_password-r" class="label-placeholder">Повторите пароль</label>
+          <img src="img/achtung.svg" alt="!">
+        </div>
+        <input type="submit" class="form__submit" value="Зарегистрироваться" />
+      </form>
+    </div>
+    <div class="popup3__footer">
+      <span class="popup3__footer_text">У вас уже есть учетная запись?</span>
+      <button class="popup3__footer_button" onclick="popupSend();">
+        Войти
+      </button>
+    </div>
+  </div>
+</div>
+
+    <header class="header">
+    <div class="wrapper">
+        <a href="index.html">
+            <img src="img/logo.svg" alt="rex change">
+        </a>
+        <div class="wrapper-nav-sign">
+            <nav>
+                <ul class="wrapper-nav-sign__block">
+                    <li>
+                        <a href="index.html">Главная</a>
+                    </li>
+                    <li>
+                        <a href="faq.html">FAQ</a>
+                    </li>
+                    <li>
+                        <a href="cooperation.html">Сотрудничество</a>
+                    </li>
+                    <li style="position: relative;" id="dropka">
+                        <a href="news.html">Информация</a>
+                        <ul class="drop-nav">
+                            <div class="drop-nav__triangle"></div>
+                            <li>
+                                <a href="rules.html">Правила</a>
+                            </li>
+                            <li>
+                                <a href="news.html">Новости</a>
+                            </li>
+                            <li>
+                                <a href="">Отзывы</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <div class="wrapper-nav-sign__sign-wrapper">
+                <div class="btn-sign">
+                    Войти
+                </div>
+                <div class="btn-pay">
+                    Оплатить
+                </div>
+            </div>
+        </div>
+        <div class="wrapper-ham-icon">
+            <button class="toggle-hamburger toggle-hamburger__animx" id="hamIcon">
+                <span>menu toggle</span>
+            </button>
+        </div>
+    </div>
+</header>
+
+    <section class="cooperation">
+      <div class="wrapper">
+        <h1 class="cooperation__title">Сотрудничество</h1>
+        <div class="cooperation_programm">
+          <div class="cooperation_programm__container">
+            <div class="cooperation_programm__top">
+              <h2>Партнерская программа</h2>
+              <span class="cooperation_programm__info_market"></span>
+            </div>
+            <div class="cooperation_programm__info">
+              <h2 class="cooperation_programm__email">
+                <span>help@rexchange.ru</span>
+              </h2>
+              <span class="cooperation_programm__main_text"
+                >Если Вы являетесь представителем мониторинга, форума, или
+                другого сервиса, с помощью которого возможен большой приток
+                клиентов</span
+              >
+              <span class="cooperation_programm__add_text"
+                >Обращайтесь к нам на почтудля обсуждения персонального процента
+                с обмена и дальнейшего сотрудничества</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="ref_programm">
+          <div class="ref_programm__container">
+            <div class="ref_programm__left">
+              <div class="ref_programm__left__title">Реферальная программа</div>
+              <div class="ref_programm__left__text">
+                Получайте вознаграждение в размере 0.5% от суммы обмена, который
+                совершил Ваш друг
+              </div>
+              <div class="ref_programm__buttons">
+                <button class="ref_programm__left__first_button">
+                  Вступить в программу
+                </button>
+                <button class="ref_programm__left__second_button">
+                  Подробнее
+                </button>
+              </div>
+            </div>
+            <div class="ref_programm__right">
+              <div class="ref_programm__step">
+                <h2 class="ref_programm__step__title">ШАГ #1</h2>
+                <span class="ref_programm__step__main_text">
+                  Нужно зарегистрироваться в личном кабинете
+                </span>
+                <span class="ref_programm__step__add_text"
+                  >И в нем Вы найдете уникальную реферальную ссылку</span
+                >
+              </div>
+              <div class="ref_programm__step">
+                <h2 class="ref_programm__step__title">ШАГ #2</h2>
+                <span class="ref_programm__step__main_text"
+                  >Отослать реферальную ссылку своим друзьм</span
+                >
+                <span class="ref_programm__step__add_text"
+                  >С помощью нее мы сможем узнать, кто и от кого совершил обмен
+                </span>
+              </div>
+              <div class="ref_programm__step">
+                <h2 class="ref_programm__step__title">ШАГ #3</h2>
+                <span class="ref_programm__step__main_text"
+                  >Получите вознаграждение за проведенный обмен</span
+                >
+                <span class="ref_programm__step__add_text"
+                  >в размере 0.5% от суммы обмена, который сделал Ваш друг</span
+                >
+              </div>
+              <div class="ref_programm__step">
+                <h2 class="ref_programm__step__title">ШАГ #4</h2>
+                <span class="ref_programm__step__main_text"
+                  >Выводите заработанные деньги из личного кабинета</span
+                >
+                <span class="ref_programm__step__add_text"
+                  >Любым удобным для Вас способом, доступным на нашем
+                  сайте</span
+                >
+              </div>
+            </div>
+            <img
+              class="ref_programm__background_image"
+              src="img/5%.svg"
+              alt="0.5%"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+  <div class="wrapper">
+    <div class="footer2__container">
+      <div class="footer2__left-area">
+        <img src="img/logo.svg" alt="rex change" />
+        <p class="footer2__left-area__rights">Все права защищены © 2021-22</p>
+      </div>
+      <div class="footer__right-area">
+        <p class="footer2__right-area__label">Партнеры:</p>
+        <div class="footer2__right-area__partner">
+          <a href="">
+            <img src="img/partner_1.png" alt="BestChange" />
+          </a>
+          <a href="">
+            <img src="img/partner_2.png" alt="ExchangeSUMO" />
+          </a>
+          <a href="">
+            <img src="img/partner_3.png" alt="Icon" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <div class="menu">
+    <div class="wrapper">
+        <img src="img/logo.svg" alt="rex change">
+        <div class="wrapper-nav-sign__sign-wrapper">
+            <div class="btn-sign">
+                Войти
+            </div>
+            <div class="btn-pay">
+                Оплатить
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li>
+                    <a href="index.html">Главная</a>
+                </li>
+                <li>
+                    <a href="faq.html">FAQ</a>
+                </li>
+                <li>
+                    <a href="cooperation.html">Сотрудничество</a>
+                </li>
+                <li>
+                    <a href="news.html">Информация</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+  </body>
+  <script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"
+  ></script>
+  <script src="js/main.js"></script>
+</html>
